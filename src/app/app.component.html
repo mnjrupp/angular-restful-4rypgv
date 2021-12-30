@@ -1,15 +1,29 @@
-<div>
+<div class="container">
+  <div class="ui card">
   <h1>Team Generator</h1>
-  <ul>
-    <li>Seth Wharton</li>
-    <li>Rahel Tessemi</li>
+  <ul class="list">
+  <li *ngFor="let member of members">{{ member }}</li>
   </ul>
-  <div>
-    <input type="text" placeholder="Name">
-    <button>Add</button> 
+  <div class="add-members-container">
+    <input 
+    #peopleInput
+    type="text" 
+    [value]="newMemberText"
+    placeholder="Name"
+    (input)="onInput(peopleInput.value)"
+    />
+    <button (click)="onClick()">Add</button> 
   </div>
-  <div>
-    <input type="text" placeholder="# of teams">
-    <button>Generate</button>
+  <div class="input-container">
+    <input 
+    #teamSizeInput
+     type="number"
+     placeholder="# of teams"
+     [value]="numberOfTeams"
+     (input)="onTeamSizeInput(teamSizeInput.value)"
+
+     />
+    <button (click)="generateTeams()">Generate</button>
   </div>
+</div>
 </div>
